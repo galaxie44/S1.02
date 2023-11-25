@@ -23,7 +23,9 @@ using namespace std;
 const unsigned short int NOMBRES_LIGNES = 3;
 const unsigned short int NOMBRES_COLONNES = 3;
 
-// Déclarations de toutes les procédures :
+/////////////////////////////////////////////
+// Déclarations de toutes les procédures : //
+/////////////////////////////////////////////
 
 void afficherRegles();
 // But : Afficher les regles de la partie
@@ -32,18 +34,25 @@ void saisiePlacementSymbole(string grille[NOMBRES_LIGNES][NOMBRES_COLONNES], uns
 // But : Placer un symbole dans la grille
 
 void afficherGrille(string grille[NOMBRES_LIGNES][NOMBRES_COLONNES], const unsigned short int NOMBRES_LIGNES, const unsigned short int NOMBRES_COLONNES);
-// But : Afficher la grille de morpion 
+// But : Afficher la grille de morpion
 
 void placerSymbole(string grille[NOMBRES_LIGNES][NOMBRES_COLONNES], unsigned short int &ligne, unsigned short int &colonne, string &symbole);
 
-
-
-
-
-
-// Déclaration de toutes les fonctions :
+///////////////////////////////////////////
+// Déclaration de toutes les fonctions : //
+///////////////////////////////////////////
 
 bool verifPlacement(string grille[NOMBRES_LIGNES][NOMBRES_COLONNES], unsigned short int ligne, unsigned short int colonne, unsigned short int &numTour);
-// But : Vérifier si le placement un symbole a déja été placé dans le tableau ou le choix a été fait 
+// But : Vérifier si le placement un symbole a déja été placé dans le tableau ou le choix a été fait
 
+bool verifVictoire(string grille[NOMBRES_LIGNES][NOMBRES_COLONNES], unsigned short int ligne, unsigned short int colonne);
+// But : Vérifier si le joueur a remporté la victoire en diagonale, horizontalement ou verticalement
 
+bool verifVictoireDiagonale(string grille[NOMBRES_LIGNES][NOMBRES_COLONNES], unsigned short int ligne, unsigned short int colonne);
+// But : Vérifier si le joueur a remporté la victoire en diagonale
+
+bool verifVictoireHorizontale(string grille[NOMBRES_LIGNES][NOMBRES_COLONNES], unsigned short int ligne, unsigned short int colonne);
+// But : Vérifier si le joueur a remporté la victoire horizontalement
+
+bool verifVictoireVerticale(string grille[NOMBRES_LIGNES][NOMBRES_COLONNES], unsigned short int ligne, unsigned short int colonne);
+// But : Vérifier si le joueur a remporté la victoire verticalement
