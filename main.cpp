@@ -31,15 +31,15 @@ int main(void)
     string nomJoueurCourrant;                 // Nom du joueur courrant
     const unsigned short int NB_LIGNES = 3;   // Nombre de colonnes de la grille de morpîon
     const unsigned short int NB_COLONNES = 3; // Nombre de colonnes de la grille de morpion
-    string symboleJ1;                           // Symbole utilisé par le joueur 1 pour la partie
-    string symboleJ2;                           // Symbole utilisé par le joueur 2 pour la partie
-    string symboleJoueurCourrant;               // Symbole du joueur courrant
-    unsigned short int nbTours = 1;               // Nombre de tours de la partie
+    string symboleJ1;                         // Symbole utilisé par le joueur 1 pour la partie
+    string symboleJ2;                         // Symbole utilisé par le joueur 2 pour la partie
+    string symboleJoueurCourrant;             // Symbole du joueur courrant
+    unsigned short int nbTours = 1;           // Nombre de tours de la partie
     char debPartie;                           // Symbole permétant de débuter la partie
     string placementSymbole;
     unsigned short int numLigne;
     unsigned short int numColonne;
-
+    bool etatVictoire;
 
     // Affichage des regles
 
@@ -89,7 +89,6 @@ int main(void)
 
     // Affichage temporaire du tableau(Procédure d'afficherGrille)
 
-    
     while (true)
     {
         if (nbTours % 2 == 0)
@@ -102,22 +101,32 @@ int main(void)
             nomJoueurCourrant = nomJoueur1;
             symboleJoueurCourrant = symboleJ1;
         }
-        
-        cout << "Tours numero " << nbTours << endl << endl;
+
+        cout << "Tours numero " << nbTours << endl
+             << endl;
         afficherGrille(grilleMorpion, NOMBRES_COLONNES, NOMBRES_LIGNES);
         cout << endl;
         saisiePlacementSymbole(grilleMorpion, numLigne, numColonne, symboleJoueurCourrant, nomJoueurCourrant, placementSymbole, nbTours);
-        if (nbTours == 9)
+        if (verifVictoire(grilleMorpion, numLigne, numColonne))
         {
+            // Afficher le message de victoire
+            cout << "Félicitations, " << nomJoueurCourrant << "! Vous avez remporté la partie." << endl;
+
+            // Sortir de la boucle, car la partie est terminée
             break;
         }
-        
+        // Verif partie égalité
+        if (nbTours == 9)
+        {
+            cout << "La partie est un match nul. Aucun joueur n'a remporté la partie." << endl;
+            break;
+        }
     }
 
     return 0;
 }
 /**
- * @brief 
+ * @brief
  * if nbTours >= 5 déclancher la vérif
- * 
+ *
  */
