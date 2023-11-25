@@ -43,7 +43,7 @@ void placerSymbole(string grille[NOMBRES_LIGNES][NOMBRES_COLONNES], unsigned sho
 
 // Déclaration de toutes les fonctions :
 
-bool verifPlacement(string grille[NOMBRES_LIGNES][NOMBRES_COLONNES], unsigned short int &ligne, unsigned short int &colonne, unsigned short int &numTour);
+bool verifPlacement(string grille[NOMBRES_LIGNES][NOMBRES_COLONNES], unsigned short int ligne, unsigned short int colonne, unsigned short int &numTour);
 // But : Vérifier si le placement un symbole a déja été placé dans le tableau ou le choix a été fait 
 
 
