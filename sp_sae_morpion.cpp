@@ -55,11 +55,18 @@ void afficherGrille(string grille[NOMBRES_LIGNES][NOMBRES_COLONNES], const unsig
         cout << "\t[";
         for (unsigned short int j = 0; j < NOMBRES_COLONNES; ++j)
         {
-            cout << grille[i][j];
-            cout << " | ";
+            if (j <= 1)
+            {
+                cout << grille[i][j];
+                cout << "|";
+            }
+            if (j == 2)
+            {
+                cout << grille[i][j];
+                cout << "]";
+            }
         }
 
-        cout << "]";
         cout << endl;
     }
 }
@@ -88,22 +95,10 @@ void saisiePlacementSymbole(string grille[NOMBRES_LIGNES][NOMBRES_COLONNES], uns
             colonneC = choix[1];
 
             // Conversion char en int
-            ligne = int(ligneL - 48) + 1;
-            colonne = int(colonneC - 48) + 1;
-        } while (ligne < 1 || ligne > 3 || colonne < 1 || colonne > 3 || choix == "R" || choix == "A");
+            ligne = int(ligneL - 48);
+            colonne = int(colonneC - 48);
+        } while (ligne < 1 || ligne > 3 || colonne < 1 || colonne > 3);
 
-        // Cas ou le joueur abandonne
-        if (choix == "A")
-        {
-            /* Code a remplacer avec abandonner */
-        }
-
-        // Affichage des regles
-
-        if (choix == "R")
-        {
-            afficherRegles();
-        }
 
         etat = verifPlacement(grille, ligne, colonne, numTour);
 
@@ -135,19 +130,19 @@ void placerSymbole(string grille[NOMBRES_LIGNES][NOMBRES_COLONNES], unsigned sho
     }
     else
     {
-        grille[ligne-1][colonne] = symbole;
+        grille[ligne - 1][colonne - 1] = symbole;
     }
-    
-    
-    
 }
 
 //////////////////////////////////////////
 /////////////// FONCTIONS ////////////////
 //////////////////////////////////////////
 
-bool verifPlacement(string grille[NOMBRES_LIGNES][NOMBRES_COLONNES], unsigned short int &ligne, unsigned short int &colonne, unsigned short int &numTour)
+bool verifPlacement(string grille[NOMBRES_LIGNES][NOMBRES_COLONNES], unsigned short int ligne, unsigned short int colonne, unsigned short int &numTour)
 {
+    // Ajuster les indices pour correspondre à l'index du tableau qui commence à zéro
+    ligne--;
+    colonne--;
 
     if (grille[ligne][colonne] != " ")
     {
