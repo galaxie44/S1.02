@@ -116,7 +116,7 @@ int main(void)
             break;
         }
         // Verif partie égalité
-        if (nbTours == 9)
+        if (nbTours == 10)
         {
             cout << "La partie est un match nul. Aucun joueur n'a remporté la partie." << endl;
             break;
