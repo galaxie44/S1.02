@@ -99,7 +99,6 @@ void saisiePlacementSymbole(string grille[NOMBRES_LIGNES][NOMBRES_COLONNES], uns
             colonne = int(colonneC - 48);
         } while (ligne < 1 || ligne > 3 || colonne < 1 || colonne > 3);
 
-
         etat = verifPlacement(grille, ligne, colonne, numTour);
 
         // Vérification de l'emplacement saisis
@@ -153,4 +152,48 @@ bool verifPlacement(string grille[NOMBRES_LIGNES][NOMBRES_COLONNES], unsigned sh
         numTour++;
         return false;
     }
+}
+
+
+
+
+
+
+bool verifVictoire(string grille[NOMBRES_LIGNES][NOMBRES_COLONNES], unsigned short int ligne, unsigned short int colonne)
+{
+    return verifVictoireDiagonale(grille, ligne, colonne) || verifVictoireHorizontale(grille, ligne, colonne) || verifVictoireVerticale(grille, ligne, colonne);
+}
+
+
+
+
+
+bool verifVictoireDiagonale(string grille[NOMBRES_LIGNES][NOMBRES_COLONNES], unsigned short int ligne, unsigned short int colonne)
+{
+    // Vérification diagonale
+    if ((grille[0][0] == grille[1][1] && grille[1][1] == grille[2][2] && grille[0][0] != " ") || (grille[0][2] == grille[1][1] && grille[1][1] == grille[2][0] && grille[0][2] != " "))
+    {
+        return true;
+    }
+    return false;
+}
+
+bool verifVictoireHorizontale(string grille[NOMBRES_LIGNES][NOMBRES_COLONNES], unsigned short int ligne, unsigned short int colonne)
+{
+    // Vérification horizontale
+    if (grille[ligne][0] == grille[ligne][1] && grille[ligne][1] == grille[ligne][2] && grille[ligne][0] != " ")
+    {
+        return true;
+    }
+    return false;
+}
+
+bool verifVictoireVerticale(string grille[NOMBRES_LIGNES][NOMBRES_COLONNES], unsigned short int ligne, unsigned short int colonne)
+{
+    // Vérification verticale
+    if (grille[0][colonne] == grille[1][colonne] && grille[1][colonne] == grille[2][colonne] && grille[0][colonne] != " ")
+    {
+        return true;
+    }
+    return false;
 }
